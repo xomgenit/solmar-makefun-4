@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLMAR — Streets of the Sun</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="hud-tl">
+    <div id="hp-bar"><div id="hp-fill"></div></div>
+    <div id="hp-text">HP 100</div>
+    <div id="cash">$100</div>
+    <div id="stars">☆☆☆☆☆</div>
+  </div>
+  <div id="hud-tr">
+    <div id="zone">DOWNTOWN</div>
+    <div id="objective">
+      <div id="objective-title">FREE ROAM</div>
+      <div id="objective-text">Explore Solmar Bay.</div>
+    </div>
+  </div>
+  <div id="banner"></div>
+  <canvas id="minimap" width="180" height="180"></canvas>
+  <div id="speed-box"><span id="speed">0 km/h</span></div>
+  <div id="hint"></div>
+</div>
+
+<div id="title-screen">
+  <div class="title-inner">
+    <div class="title-kicker">SOLMAR BAY · EST. 2026</div>
+    <h1>SOLMAR</h1>
+    <div class="title-sub">STREETS OF THE SUN</div>
+    <p class="title-tag">An open-world crime game. Steal cars, outrun the SBPD,<br>run jobs for Vera — and make it out rich.</p>
+    <div class="title-btns">
+      <button id="new-game-btn" class="btn primary">NEW GAME</button>
+      <button id="continue-btn" class="btn">CONTINUE</button>
+      <button id="howto-btn" class="btn">HOW TO PLAY</button>
+    </div>
+    <div id="howto" class="hidden">
+      <p><b>WASD / Arrows</b> — move &amp; drive &nbsp;·&nbsp; <b>SHIFT</b> — sprint &nbsp;·&nbsp; <b>Mouse</b> — aim &nbsp;·&nbsp; <b>Click</b> — shoot</p>
+      <p><b>E</b> — steal / enter / exit car &nbsp;·&nbsp; <b>SPACE</b> — handbrake &nbsp;·&nbsp; <b>ESC</b> — pause &nbsp;·&nbsp; <b>M</b> — mute</p>
+      <p>Lose the cops at the <b>Sunset Auto Spa</b> respray ($150). Heal up at <b>Solmar General</b>.</p>
+    </div>
+    <div class="title-foot">Danny “Dice” Marlow · Vera Santos · The Harbor Kings · 100% original — no Rockstar content</div>
+  </div>
+</div>
+
+<div id="pause-menu" class="hidden">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <div id="stat-line"></div>
+    <div class="panel-btns">
+      <button id="resume-btn" class="btn primary">RESUME</button>
+      <button id="save-btn" class="btn">SAVE GAME</button>
+      <button id="quit-btn" class="btn">QUIT TO TITLE</button>
+    </div>
+    <p class="panel-note">Progress autosaves after every mission.</p>
+  </div>
+</div>
+
+<div id="end-screen" class="hidden">
+  <div class="panel">
+    <h2 id="end-title" class="wasted">WASTED</h2>
+    <p id="end-sub"></p>
+    <div class="panel-btns">
+      <button id="respawn-btn" class="btn primary">GET BACK UP</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
