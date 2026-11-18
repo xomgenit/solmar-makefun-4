@@ -9,6 +9,7 @@ import { createPed, updatePed, updateShooter, knockDown, drawActor } from './act
 import { addHeat, updateWanted, updateCruiser } from './police.js';
 import { createCombat } from './combat.js';
 import { createMissionSystem } from './missions.js';
+import { registerStory, storyTick, drawStashes } from './story.js';
 import { readSave, hasSave, writeSave, clearSave } from './savegame.js';
 import { createHud } from './hud.js';
 
@@ -91,6 +92,7 @@ function buildWorld(seed, save) {
   };
   g.missions = createMissionSystem(g);
   g.combat = createCombat(g);
+  registerStory(g);
 
   // Parked + traffic cars.
   g.cars = seedParkedCars(rng, city);
@@ -395,6 +397,7 @@ function updateWorld(dt) {
   for (const c of game.cruisers) updateCruiser(c, dt, game);
   updateWanted(game, dt);
   game.missions.update(dt);
+  storyTick(game, dt);
   game.combat.update(dt);
   audio.siren(game.cruisers.some((c) => !c.wrecked) && game.wanted > 0, dt);
 
@@ -473,6 +476,7 @@ function render() {
     ctx.fillStyle = 'rgba(255,230,0,0.15)';
     ctx.fillRect(m.x - 8, m.y - 220, 16, 220);
   }
+  drawStashes(ctx, game);
   game.city.drawBuildings(ctx, view);
   const cars = [...game.cars].sort((a, b) => a.y - b.y);
   for (const c of cars) {
